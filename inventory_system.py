@@ -1,6 +1,20 @@
 import os
 import json
 
+def display_all():
+
+    print("--------MENU--------")
+    
+    print("1. Display All Products")
+    print("2. Add Product")
+    print("3. Update Stock")
+    print("4. Search Product")
+    print("5. Save Inventory")
+    print("6. Exit")
+
+    print("--------------------")
+
+
 class Product:
 
     def __init__(self, id: str, name: str, price: float, stock_quantity: int):
@@ -35,5 +49,31 @@ class Product:
         print("Price: ", self.__price)
         print("Stock Quantity: ", self.__stock_quantity)
         print("------------------")
+
+
+
+class Inventory: 
+    
+    def __init__(self): 
+        self.__product=[]
+
+    def get_products(self):
+        return self.__product
+
+    def add_product(self, product):
+        product = self.__product.append(product)
+
+    def search_product(self, id):
+        for product in self.__product:
+            ##'OOP' search product by 'id'
+            if product.get_id() == id:
+                return product 
+
+    def display(self):
+        print("\nCurrent Inventory\n" "--------------------------------------------")
+        for product in self.__product:
+            print(f"ID: {product.get_id()}, Name: {product.get_name()}, Price: {product.get_price()}, Stock Quantity: {product.get_stock()} ")
+        print("--------------------------------------------\n") ##Display 
+
 
 
